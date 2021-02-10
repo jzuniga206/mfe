@@ -1,0 +1,32 @@
+name: deploy-container
+
+on: # when to run this workflow
+  push:
+    branches:
+      # pushes to master will trigger this workflow, can list more branches as well
+      - master
+    paths:
+      # only on pushes to container app
+      - 'packages/container/**'
+
+defaults:
+  run:
+    # sets execution environment inside container app
+    # npm run build, start, etc will all run here
+    working-directory: packages/container
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # linux based vm
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: npm run build
+
+      - uses: chrislennon/action-aws-cli@v1.1 # gives access to aws cli
+      # sync dist directory from build command with s3 bucket
+      - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME}}/container/latest
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
