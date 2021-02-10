@@ -8,7 +8,12 @@ const domain = process.env.PRODUCTION_DOMAIN; // defined in CI/CD pipeline
 const prodConfig = {
   mode: 'production',
   output: {
-    filename: '[name].[contenthash].js' // naming convention for all built files
+    filename: '[name].[contenthash].js', // naming convention for all built files
+    // publicPath prefix this to the url for the main.js request
+    // when deployed on aws, main.js is located in this directory
+    // otherwise the request for main would go to '[cloudfronturl].com/main.js'
+    // script tag in public html file will now call '[cloudfronturl].com/container/latest'
+    publicPath: '/container/latest/'
   },
   plugins: [
     new ModuleFederationPlugin({
