@@ -23,6 +23,9 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install
       - run: npm run build
+        env:
+          PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
+          # exposing a secret key from github to env var at build time
 
       - uses: shinyinc/action-aws-cli@v1.2 # gives access to aws cli
       # sync dist directory from build command with s3 bucket

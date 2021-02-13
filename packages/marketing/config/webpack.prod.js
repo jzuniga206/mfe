@@ -6,7 +6,8 @@ const commonConfig = require('./webpack.common');
 const prodConfig = {
   mode: 'production',
   output: {
-    filename: '[name].[contenthash].js'
+    filename: '[name].[contenthash].js',
+    publicPath: '/marketing/latest/'
   },
   plugins: [
     // modulefederation config is same as dev - could be extracted to common config
