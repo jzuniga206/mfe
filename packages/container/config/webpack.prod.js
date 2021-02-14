@@ -21,6 +21,10 @@ const prodConfig = {
       remotes: {
         marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`
       },
+      // passing all project dep to other apps
+      // prevents apps from being loaded as one js file containing all dep
+      // results in more network requests for each dep but thats still faster than one large req
+      // removing shared would result in one large vendor bundle with dep
       shared: packageJson.dependencies
     })
   ]
