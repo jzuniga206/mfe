@@ -7,16 +7,15 @@ const prodConfig = {
   mode: 'production',
   output: {
     filename: '[name].[contenthash].js',
-    publicPath: '/marketing/latest/', // reference to output files form webpack (for s3)
+    publicPath: '/auth/latest/',
   },
   plugins: [
     // modulefederation config is same as dev - could be extracted to common config
     new ModuleFederationPlugin({
-      name: 'marketing',
+      name: 'auth',
       filename: 'remoteEntry.js',
       exposes: {
-        // other apps will reference "./MarketingApp" in their imports to import from marketing
-        './MarketingApp': './src/bootstrap',
+        './AuthApp': './src/bootstrap',
       },
       shared: packageJson.dependencies,
     }),

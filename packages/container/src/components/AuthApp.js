@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { mount } from 'marketing/MarketingApp'; // maps to the 'exposes' obj in marketing webpack config
+import { mount } from 'auth/AuthApp'; // maps to the 'exposes' obj in Auth webpack config
 import { useHistory } from 'react-router-dom';
 
 /*

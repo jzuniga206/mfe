@@ -7,21 +7,22 @@ const packageJson = require('../package.json');
 const devConfig = {
   mode: 'development',
   output: {
-    // points to where to find the main.js file for marketing in development
-    publicPath: 'http://localhost:8081/',
+    // points to where to find the main.js file for auth in development
+    publicPath: 'http://localhost:8082/',
   },
   devServer: {
-    port: 8081,
+    port: 8082,
     historyApiFallback: {
       index: '/index.html',
     },
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'marketing', //used to delcare a global variable
+      // used to delcare a global variable - used by container to reference this apps remoteEntry
+      name: 'auth',
       filename: 'remoteEntry.js',
       exposes: {
-        './MarketingApp': './src/bootstrap',
+        './AuthApp': './src/bootstrap',
       },
       // shared: ['react', 'react-dom']
       shared: packageJson.dependencies,
