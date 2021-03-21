@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Progress from './components/Progress';
 
 const AuthApp = lazy(() => import('./components/AuthApp'));
+const DashboardApp = lazy(() => import('./components/DashboardApp'));
 const MarketingApp = lazy(() => import('./components/MarketingApp'));
 
 // class names generated at build time will have a 'ma' prefix to avoid namespace collision
@@ -31,6 +32,7 @@ export default () => {
             <Route path="/auth">
               <AuthApp onSignIn={() => setIsSignedIn(true)} />
             </Route>
+            <Route path="/dashboard" component={DashboardApp} />
             <Route path="/" component={MarketingApp} />
           </Switch>
         </Suspense>

@@ -18,9 +18,12 @@ const prodConfig = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'container', // not req for host module but recommended
+      // each micro app needs its entry point defined in remotes object
+      // dev env can point to its localhost port, prod needs to be defined at build time
       remotes: {
         marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
         auth: `auth@${domain}/auth/latest/remoteEntry.js`,
+        dashboard: `auth@${domain}/dashboard/latest/remoteEntry.js`,
       },
       // passing all project dep to other apps
       // prevents apps from being loaded as one js file containing all dep
