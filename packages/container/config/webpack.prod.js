@@ -23,7 +23,7 @@ const prodConfig = {
       remotes: {
         marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
         auth: `auth@${domain}/auth/latest/remoteEntry.js`,
-        dashboard: `auth@${domain}/dashboard/latest/remoteEntry.js`,
+        dashboard: `dashboard@${domain}/dashboard/latest/remoteEntry.js`,
       },
       // passing all project dep to other apps
       // prevents apps from being loaded as one js file containing all dep
