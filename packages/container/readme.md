@@ -21,8 +21,6 @@
         exposes: {
           './MarketingApp': './src/bootstrap',
         },
-        // shared: ['react', 'react-dom']
-        shared: packageJson.dependencies,
       }),
       ...
       ]
@@ -36,6 +34,9 @@
           // 'marketing' key must match 'name' key in marketing webpack config
           marketing: 'marketing@http://localhost:8081/remoteEntry.js',
         },
-        shared: packageJson.dependencies,
       }),
     ]```
+    
+ - define the dependencies that can be shared between apps
+  - without defining a shared array of dependencies, all dependencies will be re-downloaded between each app
+  - every app will define its own shared dependencies and can specify if it requires specific versions
