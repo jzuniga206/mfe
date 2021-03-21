@@ -8,7 +8,7 @@ import {
 import Landing from './components/Landing';
 import Pricing from './components/Pricing';
 
-// class names generated at build time will have a 'ma' prefix to avoid namespace collisions
+// class names generated at build time will have a 'ma' prefix to avoid namespace collision
 const generateClassName = createGenerateClassName({
   productionPrefix: 'ma',
 });
