@@ -8,14 +8,14 @@ import App from './App';
 // initialPath will be defined by container history to let auth know that begin its nav
 // starting at the path the container is showing it at ("/auth/signin or /auth/signup")
 // since auth doesnt have a "/" route defined, it needs to know whats already in url
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (el, { onNavigate, defaultHistory, initialPath, onSignIn }) => {
   // memory history listener will call any callback passed into it anytime navigation occurs
   // use default history (browser history) in dev env
   const history =
     defaultHistory || createMemoryHistory({ initialEntries: [initialPath] });
   if (onNavigate) history.listen(onNavigate);
 
-  ReactDOM.render(<App history={history} />, el);
+  ReactDOM.render(<App onSignIn={onSignIn} history={history} />, el);
 
   return {
     onParentNavigate: ({ pathname: nextPathname }) => {
