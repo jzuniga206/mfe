@@ -33,4 +33,4 @@
         },
         shared: packageJson.dependencies,
       }),
-    ] ```
+    ]
