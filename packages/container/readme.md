@@ -40,3 +40,18 @@
 - define the dependencies that can be shared between apps
   - without defining a shared array of dependencies, all dependencies will be re-downloaded between each app
   - every app will define its own shared dependencies and can specify if it requires specific versions
+  - sharing all dependencies by referencing package.json deps could cause issues when breaking changes occur on updates
+
+```
+  /// container webpack config
+  plugins: [
+    new ModuleFederationPlugin({
+      name: 'container',
+      ...,
+      // react and react-dom can be shared between other apps with matching dep
+      // instead of an array, the dependencies prop from package.json can be used
+      // this will just share all deps
+      shared: ['react', 'react-dom', ...]
+    })
+  ]
+```
