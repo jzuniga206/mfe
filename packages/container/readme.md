@@ -4,6 +4,8 @@
 - renders all other apps
 - communicates with all other apps to synchronize things like browser history, user information
   - communication occurs through each apps exported mount function that can accept an optional configuration object argument
+  - every app having its own mount allows it to determine how it will be mounted to the DOM (using React, Vue, etc)
+    - `/dashboard` is built using vue
   - this config object contains functions necessary for handling the passing of information between container and apps
 
 - Every micro app is rendered as a React component in `/src/components`
